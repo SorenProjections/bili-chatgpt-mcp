@@ -1,0 +1,17 @@
+[Unit]
+Description=Personal Bilibili video understanding MCP service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/bili-chatgpt-mcp
+EnvironmentFile=%h/.config/bili-chatgpt-mcp.env
+ExecStart=%h/bili-chatgpt-mcp/.venv/bin/python %h/bili-chatgpt-mcp/server.py
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=default.target
